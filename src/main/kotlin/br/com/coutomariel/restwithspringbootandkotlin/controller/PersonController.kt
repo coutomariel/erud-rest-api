@@ -1,5 +1,7 @@
 package br.com.coutomariel.restwithspringbootandkotlin.controller
 
+import br.com.coutomariel.restwithspringbootandkotlin.dto.request.CreatePersonDTO
+import br.com.coutomariel.restwithspringbootandkotlin.dto.response.PersonDTO
 import br.com.coutomariel.restwithspringbootandkotlin.model.Person
 import br.com.coutomariel.restwithspringbootandkotlin.service.PersonService
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,18 +18,18 @@ class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun getPerson(@RequestBody person: Person): Person {
+    fun getPerson(@RequestBody person: CreatePersonDTO): PersonDTO {
         return personService.createPerson(person)
     }
 
     @GetMapping("/{id}")
-    fun getById(@PathVariable id: Long): ResponseEntity<Person> {
-        val response = personService.findById(id)
+    fun getById(@PathVariable id: Long): ResponseEntity<PersonDTO> {
+        val response = personService.getById(id)
         return ResponseEntity.ok().body(response)
     }
 
     @GetMapping
-    fun getAll(): List<Person> {
+    fun getAll(): List<PersonDTO> {
         return personService.getAll()
     }
 

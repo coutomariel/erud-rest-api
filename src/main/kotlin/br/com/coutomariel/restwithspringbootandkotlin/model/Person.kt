@@ -6,11 +6,11 @@ import javax.persistence.*
 data class Person(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-    val firstName: String? = null,
-    val lastName: String? = null,
-    val adress: String? = null,
+    var id: Long? = null,
+    var firstName: String? = "",
+    var lastName: String? = "",
+    var adress: String? = "",
     @Enumerated(EnumType.STRING)
-    val gender: Gender? = null
+    var gender: Gender? = null
 
     )
